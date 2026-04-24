@@ -1,4 +1,24 @@
-<button
-onclick='fetch("https://cdn.jsdelivr.net/gh/bubbls/ugs-singlefile@main/AASINGLEFILE.html?t="+Date.now()).then(response => response.text()).then(text => {const newWin = window.open("about:blank", "_blank");if (newWin) {newWin.document.open();newWin.document.write(text);newWin.document.close();}});'
-style="width: 100%; height: 100%; font-size: 100;"
->math homework</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Homework</title>
+</head>
+<body style="margin: 0; padding: 0; overflow: hidden;">
+    <div id="content" style="width: 100%; height: 100vh;"></div>
+    
+    <script>
+        // Automatically fetch and display the single file on page load
+        fetch("https://cdn.jsdelivr.net/gh/bubbls/ugs-singlefile@main/AASINGLEFILE.html?t=" + Date.now())
+            .then(response => response.text())
+            .then(text => {
+                document.getElementById('content').innerHTML = text;
+            })
+            .catch(error => {
+                console.error('Error loading content:', error);
+                document.getElementById('content').innerHTML = '<p>Error loading content. Please try again later.</p>';
+            });
+    </script>
+</body>
+</html>
